@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Book: Identifiable, Codable {
-    static let genres = ["Classic", "Fantasy", "Science Fiction", "Dystopian", "Action and Adventure", "Mystery", "Horror", "Thriller and Suspense", "Historical Fiction", "Romance", "Yound Adult", "Memoir and Autobiography", "Biography", "History", "True Crime", "Religion and Spirituality", "Humanities & Social Sciences", "Science and Technology", "Comic Book and Graphic Novel", "Short Stories", "Suspense and Thriller", "Poetry"]
+    static let genres = ["Action and Adventure", "Biography", "Classic", "Comic Book and Graphic Novel", "Dystopian", "Fantasy", "Historical Fiction", "History", "Horror", "Humanities & Social Sciences", "Memoir and Autobiography", "Mystery", "Poetry", "Religion and Spirituality", "Romance", "Science Fiction", "Science and Technology", "Short Stories", "Suspense and Thriller", "Thriller and Suspense", "True Crime", "Young Adult"]
     var id: UUID?
     var title: String
     var author: Author

@@ -13,7 +13,9 @@ struct BookDetailView: View {
     @State private var confirmationShown = false
     let book: Book
     let index: Int
+    
     var body: some View {
+        // MARK: Book Information
         ScrollView {
             LazyVStack (alignment: .leading) {
                 Text("By \(book.author.firstName) \(book.author.lastName)")
@@ -22,14 +24,16 @@ struct BookDetailView: View {
                     Text("Genre: ")
                     Text(book.genre)
                         .italic()
-                }
+                } // end of HStack
                 
                 Divider()
                 
                 Text("Reading Data")
                     .font(.title)
                 Text("Number of pages: \(book.numberOfPages)")
+                // verbatim argument label means that the output with be formatted exactly as the underlying data
                 Text(verbatim: "Estimated reading time: \(book.estimatedReadingTime)")
+                
                 HStack (spacing: 1) {
                     Text("Rating:")
                     // output stars for rating
@@ -40,7 +44,7 @@ struct BookDetailView: View {
                     }
                 }
                 
-                // if there are notes, display them
+                // if there are notes and the notes are not jusst white space, display them
                 if let n = book.notes, !Utilities.isEmpty(book.notes!) {
                     Text("Notes")
                         .font(.title)
@@ -49,31 +53,29 @@ struct BookDetailView: View {
                 }
             }
             .padding([.leading, .trailing])
-                    }
-        .navigationTitle(book.title)
+        } // end of ScrollView
+        .navigationBarTitle(book.title)
         
         HStack (spacing: 80) {
-            Spacer()
             
             // MARK: Delete Button
             Button {
-                print("Deleting")
                 confirmationShown = true
             } label: {
                 Image(systemName: "trash.fill")
-                .font(.system(size: 25))
+                    .font(.system(size: 25))
             }
+            .buttonStyle(PlainButtonStyle())
             .confirmationDialog(
                 "Are you sure you want to delete this book?",
                 isPresented: $confirmationShown) {
-                Button("Delete") {
-                    libraryModel.deleteBook(at: index)
+                    Button("Delete") {
+                        libraryModel.deleteBook(at: index)
+                    }
                 }
-            }
             
             // MARK: Edit Book
             Button {
-                print("Editing")
                 showingSheet.toggle()
             } label: {
                 Image(systemName: "pencil")
@@ -83,10 +85,9 @@ struct BookDetailView: View {
             .fullScreenCover(isPresented: $showingSheet) {
                 BookFormView(viewTitle: "Edit Book", buttonLabel: "Edit", book: book)
             }
-            Spacer()
-        }
+        } // end of HStack
         .foregroundColor(.black)
-        .padding(10)
+        .padding(15)
     }
 }
 
