@@ -28,7 +28,6 @@ class LibraryModel: ObservableObject {
         if reverseSort {
             used.reverse()
         }
-        print(used)
         return used
     }
     

@@ -49,7 +49,7 @@ struct LibraryView: View {
                         // for each genre, display all the books in the genre in a section
                         List(libraryModel.usedGenres, id: \.self) { g in
                             Section(header: Text(g)) {
-                                ForEach (0..<libraryModel.books.count) { index in
+                                ForEach (0..<libraryModel.books.count, id: \.self) { index in
                                     let book = libraryModel.books[index]
                                     if book.genre == g {
                                         NavigationLink(destination: BookDetailView(book: book, index: index)) {
