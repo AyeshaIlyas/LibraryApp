@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookFormView: View {
+    private let accentColor = Color(red: 0.929, green: 0.102, blue: 0.365)
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var libraryModel: LibraryModel
     @State var title = "";
@@ -99,7 +100,6 @@ struct BookFormView: View {
                     
                 }
                 .navigationBarTitle(viewTitle)
-                .accentColor(.blue)
                 
                 HStack {
                     Spacer()
@@ -154,7 +154,7 @@ struct BookFormView: View {
                     } label : {
                         Text(buttonLabel)
                             .frame(maxWidth: 100, maxHeight: 40)
-                            .background(.blue)
+                            .background(accentColor)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -164,7 +164,7 @@ struct BookFormView: View {
                     } label : {
                         Text("Cancel")
                             .frame(maxWidth: 100, maxHeight: 40)
-                            .background(.blue)
+                            .background(accentColor)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -173,6 +173,7 @@ struct BookFormView: View {
                 .padding()
             }
         }
+        .accentColor(accentColor)
         
     }
 }

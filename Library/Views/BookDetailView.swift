@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookDetailView: View {
+    private let accentColor = Color(red: 0.929, green: 0.102, blue: 0.365)
     @EnvironmentObject var libraryModel: LibraryModel
     @State private var showingSheet = false
     @State private var confirmationShown = false
@@ -64,6 +65,7 @@ struct BookDetailView: View {
             } label: {
                 Image(systemName: "trash.fill")
                     .font(.system(size: 25))
+                    .foregroundColor(accentColor)
             }
             .buttonStyle(PlainButtonStyle())
             .confirmationDialog(
@@ -80,6 +82,7 @@ struct BookDetailView: View {
             } label: {
                 Image(systemName: "pencil")
                     .font(.system(size: 25))
+                    .foregroundColor(accentColor)
             }
             .buttonStyle(PlainButtonStyle())
             .fullScreenCover(isPresented: $showingSheet) {

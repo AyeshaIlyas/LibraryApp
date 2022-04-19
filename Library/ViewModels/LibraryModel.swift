@@ -23,6 +23,12 @@ class LibraryModel: ObservableObject {
                 used.append(book.genre)
             }
         }
+        
+        used.sort()
+        if reverseSort {
+            used.reverse()
+        }
+        print(used)
         return used
     }
     
@@ -83,6 +89,7 @@ class LibraryModel: ObservableObject {
             }
         }
         self.reverseSort.toggle()
+        self.save()
     }
     
     // keep track of total number of books and display in GUI
