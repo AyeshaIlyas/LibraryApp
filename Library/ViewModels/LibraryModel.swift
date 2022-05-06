@@ -53,7 +53,6 @@ class LibraryModel: ObservableObject {
                 books = decodedBooks
         } else {
             books = [Book]()
-            print("Books empty")
         }
         
         // retrieve sort state
@@ -109,10 +108,6 @@ class LibraryModel: ObservableObject {
         } else if sortOptions[sortState]  == Sort.byTitleAsc {
             books.sort { book1, book2 in
                 return book1.title < book2.title
-            }
-            
-            for book in books {
-                print(book.title)
             }
         } else if sortOptions[sortState]  == Sort.byTitleDesc {
             books.sort { book1, book2 in
