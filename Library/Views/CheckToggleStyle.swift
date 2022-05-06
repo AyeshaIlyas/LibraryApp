@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// retrieved from hackingwithswift.com
 struct CheckToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         Button {

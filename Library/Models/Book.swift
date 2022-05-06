@@ -10,14 +10,14 @@ import UIKit
 
 class Book: Identifiable, Codable {
     static let genres = ["Academic", "Action and Adventure", "Biography", "Classic", "Comic Book and Graphic Novel", "Dystopian", "Fantasy", "Fiction", "Historical Fiction", "History", "Horror", "Humanities & Social Sciences", "Memoir and Autobiography", "Mystery", "Poetry", "Religion and Spirituality", "Romance", "Science Fiction", "Science and Technology", "Short Stories", "Suspense and Thriller", "Thriller and Suspense", "True Crime", "Young Adult"]
-    var id: UUID?
+    var date = Date()
     var title: String
     var author: Author
     var yearOfPublication: Int
     var numberOfPages: Int
     var estimatedReadingTime: Double // in hours
     var genre: String
-    var rating: Int
+    var rating: Int // 1-5
     var notes: String?
     
     init(title: String, authorFirstName: String, authorLastName: String, yearOfPublication: Int, numberOfPages: Int, estimatedReadingTime: Double, genre: String, rating: Int, notes: String? = nil) throws {
@@ -51,7 +51,6 @@ class Book: Identifiable, Codable {
         }
         
         // inialize book
-        self.id = UUID()
         self.title = Utilities.parseString(title)
         self.author = Author(Utilities.parseString(authorFirstName), Utilities.parseString(authorLastName))
         self.yearOfPublication = yearOfPublication

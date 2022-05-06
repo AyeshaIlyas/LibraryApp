@@ -45,7 +45,7 @@ struct BookDetailView: View {
                     }
                 }
                 
-                // if there are notes and the notes are not jusst white space, display them
+                // if there are notes and the notes are not just white space, display them
                 if let n = book.notes, !Utilities.isEmpty(book.notes!) {
                     Text("Notes")
                         .font(.title)

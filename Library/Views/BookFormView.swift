@@ -25,11 +25,13 @@ struct BookFormView: View {
     let buttonLabel: String
     var book: Book?
     
+    // MARK: Initializer for adding a book
     init(viewTitle: String, buttonLabel: String) {
         self.viewTitle = viewTitle
         self.buttonLabel = buttonLabel
     }
     
+    // MARK: Initializer for editing a book
     init(viewTitle: String, buttonLabel: String, book: Book) {
         self.init(viewTitle: viewTitle, buttonLabel: buttonLabel)
         _title = State(initialValue: book.title)
@@ -123,7 +125,6 @@ struct BookFormView: View {
                             } else if !Book.isValidReadingTime(Double(estimatedReadingTime)!) {
                                 errorMsg = "Please enter a valid reading time. The time must be positive."
                             } else {
-                                // use enum
                                 // MARK: Add Button
                                 if buttonLabel == "Add" {
                                     // sage to force unwrap values because we passed the validation checks
@@ -141,14 +142,13 @@ struct BookFormView: View {
                                     b.estimatedReadingTime = Double(estimatedReadingTime)!
                                     b.rating = Int(rating)!
                                     b.notes = notes
-                                    libraryModel.editBook()
+                                    libraryModel.enableEdit()
                                 }
                                 
                                 errorMsg = ""
                                 dismiss()
                             }
                         } catch {
-                            print(error)
                             errorMsg = "Invalid data entered"
                         }
                     } label : {

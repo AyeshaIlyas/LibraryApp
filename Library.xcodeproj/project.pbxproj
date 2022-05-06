@@ -17,11 +17,11 @@
 		60AD07C1280BB919004C7A0D /* BookFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AD07C0280BB919004C7A0D /* BookFormView.swift */; };
 		60AD07C4280BB947004C7A0D /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AD07C3280BB947004C7A0D /* LibraryModel.swift */; };
 		60AD07C7280BB993004C7A0D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AD07C6280BB993004C7A0D /* Book.swift */; };
+		60B1C6E12825AA2F00F16752 /* books.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 60B1C6E02825AA2F00F16752 /* books.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		60966312280E20AE009AF748 /* CheckToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckToggleStyle.swift; sourceTree = "<group>"; };
-		60966315280E2433009AF748 /* bookData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bookData.json; sourceTree = "<group>"; };
 		60AD07A9280BB86E004C7A0D /* Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Library.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AD07AC280BB86E004C7A0D /* LibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryApp.swift; sourceTree = "<group>"; };
 		60AD07AE280BB86E004C7A0D /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -32,6 +32,7 @@
 		60AD07C0280BB919004C7A0D /* BookFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFormView.swift; sourceTree = "<group>"; };
 		60AD07C3280BB947004C7A0D /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 		60AD07C6280BB993004C7A0D /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		60B1C6E02825AA2F00F16752 /* books.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = books.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +72,7 @@
 				60AD07C5280BB97F004C7A0D /* Models */,
 				60AD07B0280BB873004C7A0D /* Assets.xcassets */,
 				60AD07B2280BB873004C7A0D /* Preview Content */,
-				60966315280E2433009AF748 /* bookData.json */,
+				60B1C6E02825AA2F00F16752 /* books.rtf */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -179,6 +180,7 @@
 			files = (
 				60AD07B4280BB873004C7A0D /* Preview Assets.xcassets in Resources */,
 				60AD07B1280BB873004C7A0D /* Assets.xcassets in Resources */,
+				60B1C6E12825AA2F00F16752 /* books.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

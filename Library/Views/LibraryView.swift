@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct LibraryView: View {
+    private let showGenresKey = "showGenres"
     @EnvironmentObject var libraryModel: LibraryModel
     @State private var showingSheet = false
-    @State private var sectionize = true
+    @State private var showGenres: Bool
     private let accentColor = Color(red: 0.929, green: 0.102, blue: 0.365)
+    
+    init() {
+        // retrieve state data
+        if let data = UserDefaults.standard.data(forKey: self.showGenresKey) {
+            if let decoded = try? JSONDecoder().decode(Bool.self, from: data) {
+                self.showGenres = decoded
+                return
+            }
+        }
+        self.showGenres = false
+    }
     
     var body: some View {
         NavigationView {
@@ -23,7 +35,7 @@ struct LibraryView: View {
                     
                     // MARK: Sort By Title Button
                     Button {
-                        libraryModel.sortByTitle()
+                        libraryModel.sort()
                     } label: {
                         Image(systemName: "arrow.up.arrow.down")
                             .padding(.leading, 25)
@@ -35,9 +47,13 @@ struct LibraryView: View {
                     Spacer()
                     
                     // MARK: Show Sections Toggle
-                    Toggle("Show genres", isOn: $sectionize)
+                    Toggle("Show genres", isOn: $showGenres)
                         .toggleStyle(CheckToggleStyle())
                         .padding(.trailing, 25)
+                        // save value of showGenre so that if user quits app, when they reopen it the last used value will be the default
+                        .onChange(of: showGenres) { _ in
+                            save()
+                        }
 
                 }
                 .foregroundColor(accentColor)
@@ -45,8 +61,8 @@ struct LibraryView: View {
                 ZStack {
                     // Book List
                     // MARK: With sections shown
-                    if sectionize {
-                        // for each genre, display all the books in the genre in a section
+                    if showGenres {
+                        // for each genre, display all the books of the genre in a section
                         List(libraryModel.usedGenres, id: \.self) { g in
                             Section(header: Text(g)) {
                                 ForEach (0..<libraryModel.books.count, id: \.self) { index in
@@ -63,6 +79,7 @@ struct LibraryView: View {
                                 }
                             }
                         } // end of List
+                        .id(libraryModel.listId)
                     }
                     
                     // MARK: Without sections
@@ -94,7 +111,6 @@ struct LibraryView: View {
                                             .position(x: geo.size.width - 70, y: geo.size.height - 70)
                                             .font(.system(size: 60))
                                             .foregroundColor(.white)
-//                                            .shadow(color: Color(UIColor.lightGray), radius: 10, x: 5, y: 7)
                                         
                                         Image(systemName: "plus.circle.fill")
                                             .position(x: geo.size.width - 70, y: geo.size.height - 70)
@@ -117,9 +133,14 @@ struct LibraryView: View {
             .navigationBarTitle("Library")
         }
         .accentColor(accentColor)
-        
     }
     
+    func save() {
+        // save state data
+        if let encoded = try? JSONEncoder().encode(showGenres) {
+            UserDefaults.standard.set(encoded, forKey: showGenresKey)
+        }
+    }
 }
 
 struct LibraryView_Previews: PreviewProvider {
